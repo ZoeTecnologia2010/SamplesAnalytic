@@ -11,7 +11,6 @@ type
           LabelAnalytics: TLabel;
           MemoResult: TMemo;
           IdHTTP: TIdHTTP;
-          IdSSLIOHandlerSocketOpenSSL: TIdSSLIOHandlerSocketOpenSSL;
           LabelResults: TLabel;
           PageControl: TPageControl;
           TabScreenView: TTabSheet;
@@ -53,6 +52,13 @@ type
           Label_EA: TLabel;
           Edit_EC: TEdit;
           Label_EC: TLabel;
+    TabPageView: TTabSheet;
+    Edit_DH: TEdit;
+    Label_DH: TLabel;
+    Label_DP: TLabel;
+    Edit_DP: TEdit;
+    Label_DT: TLabel;
+    Edit_DT: TEdit;
           procedure ButtonSendClick(Sender: TObject);
      private
           { Private declarations }
@@ -84,32 +90,55 @@ begin
      //
      if PageControl.ActivePage = TabScreenView then
      begin
+          if Edit_V.Text   <> '' then EnvStr.Values['v']   := Edit_V.Text;
+          if Edit_TID.Text <> '' then EnvStr.Values['tid'] := Edit_TID.Text;
+          if Edit_CID.Text <> '' then EnvStr.Values['cid'] := Edit_CID.Text;
+          //
           EnvStr.Values['t'] := TabScreenView.Hint;
           //
-          EnvStr.Values['v'] := Edit_V.Text;
-          EnvStr.Values['tid'] := Edit_TID.Text;
-          EnvStr.Values['cid'] := Edit_CID.Text;
-          EnvStr.Values['an'] := Edit_AN.Text;
-          EnvStr.Values['cd'] := Edit_CD.Text;
-          EnvStr.Values['uid'] := Edit_UID.Text;
+          if Edit_AN.Text  <> '' then EnvStr.Values['an']  := Edit_AN.Text;
+          if Edit_AV.Text  <> '' then EnvStr.Values['av']  := Edit_AV.Text;
           //
-          EnvStr.Values['ua'] := Edit_UA.Text;
-          EnvStr.Values['av'] := Edit_AV.Text;
-          EnvStr.Values['sr'] := Edit_SR.Text;
-          EnvStr.Values['ds'] := Edit_DS.Text;
-          EnvStr.Values['cn'] := Edit_CN.Text;
+          if Edit_CD.Text  <> '' then EnvStr.Values['cd']  := Edit_CD.Text;
+          //
+          if Edit_UID.Text <> '' then EnvStr.Values['uid'] := Edit_UID.Text;
+          if Edit_UA.Text  <> '' then EnvStr.Values['ua']  := Edit_UA.Text;
+          if Edit_SR.Text  <> '' then EnvStr.Values['sr']  := Edit_SR.Text;
+          if Edit_DS.Text  <> '' then EnvStr.Values['ds']  := Edit_DS.Text;
+          if Edit_CN.Text  <> '' then EnvStr.Values['cn']  := Edit_CN.Text;
      end;
+     //
+     if PageControl.ActivePage = TabPageView then
+     begin
+          if Edit_V.Text   <> '' then EnvStr.Values['v']   := Edit_V.Text;
+          if Edit_TID.Text <> '' then EnvStr.Values['tid'] := Edit_TID.Text;
+          if Edit_CID.Text <> '' then EnvStr.Values['cid'] := Edit_CID.Text;
+          //
+          EnvStr.Values['t'] := TabPageView.Hint;
+          //
+          if Edit_DH.Text  <> '' then EnvStr.Values['dh']  := Edit_DH.Text;
+          if Edit_DP.Text  <> '' then EnvStr.Values['dp']  := Edit_DP.Text;
+          if Edit_DT.Text  <> '' then EnvStr.Values['dt']  := Edit_DT.Text;
+          //
+          EnvStr.Values['dr'] := 'http://www.zoetecnologia.com.br';
+          EnvStr.Values['cn'] := '(direct)';
+          EnvStr.Values['cs'] := 'Version ' + Edit_AV.Text;
+          EnvStr.Values['cm'] := 'Windows 10';
+          EnvStr.Values['ck'] := 'UserName';
+          EnvStr.Values['cc'] := 'content';
+     end;
+
      if PageControl.ActivePage = TabException then
      begin
-          EnvStr.Values['t'] := TabException.Hint;
-          //
           EnvStr.Values['v'] := Edit_V.Text;
           EnvStr.Values['tid'] := Edit_TID.Text;
           EnvStr.Values['cid'] := Edit_CID.Text;
+          //
+          EnvStr.Values['t'] := TabException.Hint;
+          //
           EnvStr.Values['an'] := Edit_AN.Text;
           EnvStr.Values['cd'] := Edit_CD.Text;
           EnvStr.Values['uid'] := Edit_UID.Text;
-          //
           EnvStr.Values['exd'] := Edit_EXD.Text;
           EnvStr.Values['exf'] := Edit_EXF.Text;
      end;
@@ -120,6 +149,7 @@ begin
           EnvStr.Values['cid'] := Edit_CID.Text;
           //
           EnvStr.Values['t'] := TabEvent.Hint;
+          //
           EnvStr.Values['ec'] := Edit_EC.Text;
           EnvStr.Values['ea'] := Edit_EA.Text;
           EnvStr.Values['el'] := Edit_EL.Text;

@@ -18,7 +18,7 @@ object FormMain: TFormMain
   TextHeight = 13
   object LabelAnalytics: TLabel
     Left = 8
-    Top = 8
+    Top = 254
     Width = 200
     Height = 13
     Caption = 'https://www.google-analytics.com/collect'
@@ -30,15 +30,15 @@ object FormMain: TFormMain
     ParentFont = False
   end
   object LabelResults: TLabel
-    Left = 16
-    Top = 309
+    Left = 252
+    Top = 224
     Width = 30
     Height = 13
     Caption = 'Result'
   end
   object ButtonSend: TButton
     Left = 8
-    Top = 278
+    Top = 212
     Width = 75
     Height = 25
     Hint = 'Send Information to Google Analytics'
@@ -49,10 +49,10 @@ object FormMain: TFormMain
     OnClick = ButtonSendClick
   end
   object MemoResult: TMemo
-    Left = 8
-    Top = 328
-    Width = 624
-    Height = 144
+    Left = 252
+    Top = 240
+    Width = 380
+    Height = 232
     Color = clBtnFace
     ReadOnly = True
     ScrollBars = ssVertical
@@ -60,10 +60,10 @@ object FormMain: TFormMain
   end
   object PageControl: TPageControl
     Left = 248
-    Top = 59
+    Top = 8
     Width = 384
     Height = 198
-    ActivePage = TabScreenView
+    ActivePage = TabPageView
     TabOrder = 2
     object TabScreenView: TTabSheet
       Hint = 'screenview'
@@ -148,7 +148,7 @@ object FormMain: TFormMain
         ParentShowHint = False
         ShowHint = True
         TabOrder = 3
-        Text = 'App'
+        Text = 'Free'
         TextHint = 'Data Source'
       end
       object Edit_CN: TEdit
@@ -211,8 +211,6 @@ object FormMain: TFormMain
       Hint = 'event'
       Caption = 'Event'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 27
       object Label_EL: TLabel
         Left = 11
         Top = 78
@@ -290,10 +288,74 @@ object FormMain: TFormMain
         TextHint = 'Event Category'
       end
     end
+    object TabPageView: TTabSheet
+      Hint = 'pageview'
+      Caption = 'PageView'
+      ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 27
+      object Label_DH: TLabel
+        Left = 19
+        Top = 14
+        Width = 50
+        Height = 13
+        Caption = 'Param_DH'
+      end
+      object Label_DP: TLabel
+        Left = 19
+        Top = 40
+        Width = 49
+        Height = 13
+        Caption = 'Param_DP'
+      end
+      object Label_DT: TLabel
+        Left = 19
+        Top = 68
+        Width = 49
+        Height = 13
+        Caption = 'Param_DT'
+      end
+      object Edit_DH: TEdit
+        Left = 83
+        Top = 11
+        Width = 121
+        Height = 21
+        Hint = 'Document hostname'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        Text = 'zoetecnologia.com.br'
+        TextHint = 'Document hostname'
+      end
+      object Edit_DP: TEdit
+        Left = 83
+        Top = 38
+        Width = 121
+        Height = 21
+        Hint = 'Page'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
+        Text = 'FrmPrincipal'
+        TextHint = 'Page'
+      end
+      object Edit_DT: TEdit
+        Left = 83
+        Top = 65
+        Width = 121
+        Height = 21
+        Hint = 'Title'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 2
+        Text = 'Principal'
+        TextHint = 'Title'
+      end
+    end
   end
   object PanelParams: TPanel
     Left = 8
-    Top = 59
+    Top = 8
     Width = 234
     Height = 198
     TabOrder = 3
@@ -379,7 +441,7 @@ object FormMain: TFormMain
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
-      Text = '128990494'
+      Text = '555'
       TextHint = 'Client ID'
     end
     object Edit_AN: TEdit
@@ -420,7 +482,6 @@ object FormMain: TFormMain
     end
   end
   object IdHTTP: TIdHTTP
-    IOHandler = IdSSLIOHandlerSocketOpenSSL
     AllowCookies = True
     ProxyParams.BasicAuthentication = False
     ProxyParams.ProxyPort = 0
@@ -433,18 +494,8 @@ object FormMain: TFormMain
     Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
     Request.Ranges.Units = 'bytes'
     Request.Ranges = <>
-    HTTPOptions = [hoForceEncodeParams]
-    Left = 360
-    Top = 8
-  end
-  object IdSSLIOHandlerSocketOpenSSL: TIdSSLIOHandlerSocketOpenSSL
-    MaxLineAction = maException
-    Port = 0
-    DefaultPort = 0
-    SSLOptions.Mode = sslmUnassigned
-    SSLOptions.VerifyMode = []
-    SSLOptions.VerifyDepth = 0
-    Left = 392
-    Top = 8
+    HTTPOptions = [hoForceEncodeParams, hoNoParseMetaHTTPEquiv]
+    Left = 536
+    Top = 112
   end
 end
