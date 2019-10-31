@@ -150,8 +150,6 @@ object FormMain: TFormMain
       Hint = 'pageview'
       Caption = 'PageView'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 27
       object Label_DH: TLabel
         Left = 3
         Top = 11
@@ -433,22 +431,5 @@ object FormMain: TFormMain
       Text = 'Developer'
       TextHint = 'User ID'
     end
-  end
-  object IdHTTP: TIdHTTP
-    AllowCookies = True
-    ProxyParams.BasicAuthentication = False
-    ProxyParams.ProxyPort = 0
-    Request.ContentLength = -1
-    Request.ContentRangeEnd = -1
-    Request.ContentRangeStart = -1
-    Request.ContentRangeInstanceLength = -1
-    Request.Accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-    Request.BasicAuthentication = False
-    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
-    Request.Ranges.Units = 'bytes'
-    Request.Ranges = <>
-    HTTPOptions = [hoForceEncodeParams, hoNoParseMetaHTTPEquiv]
-    Left = 536
-    Top = 112
   end
 end

@@ -4,14 +4,13 @@ interface
 
 uses
      Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls,
-     IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP;
+     IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, IdSSL, IdSSLOpenSSL, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack;
 
 type
      TFormMain = class(TForm)
           ButtonSend: TButton;
           LabelAnalytics: TLabel;
           MemoResult: TMemo;
-          IdHTTP: TIdHTTP;
           LabelResults: TLabel;
           PageControl: TPageControl;
           PanelParams: TPanel;
@@ -72,6 +71,7 @@ procedure TFormMain.ButtonSendClick(Sender: TObject);
 var
      sResponse: string;
      EnvStr: TStringList;
+     IdHTTP: TIdHTTP;
 begin
      // https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide?hl=pt-br
      // EXEMPLOS UA-128990494-3
@@ -83,7 +83,6 @@ begin
      //
      EnvStr.Clear;
      //
-
      if PageControl.ActivePage = TabPageView then
      begin
           if Edit_V.Text <> '' then
@@ -126,22 +125,31 @@ begin
      //
      if (EnvStr.Text <> '') then
      begin
+          IdHTTP := TIdHTTP.Create(nil);
+          //
           try
+               IdHTTP.ReadTimeout := 30000;
+               //
                sResponse := IdHTTP.Post(LabelAnalytics.Caption, EnvStr);
           except
                on E: Exception do
+               begin
                     ShowMessage('Error on request: '#13#10 + E.Message);
+               end;
           end;
           //
           Application.ProcessMessages;
           //
           MemoResult.Lines.Add(DateTimeToStr(Now));
+          MemoResult.Lines.Add('Version: ' + OpenSSLVersion());
           MemoResult.Lines.Add('=====================');
           MemoResult.Lines.Add(sResponse);
           MemoResult.Lines.Add(IdHTTP.ResponseText);
           MemoResult.Lines.Add('=====================');
           MemoResult.Lines.Add(LabelAnalytics.Caption);
           MemoResult.Lines.Add(EnvStr.Text);
+          //
+          IdHTTP.Free;
      end;
      //
      EnvStr.Free;
