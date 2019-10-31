@@ -1,9 +1,10 @@
 unit UnitMain;
-
+
 interface
 
 uses
-     Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL, IdSSLOpenSSL, IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls;
+     Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls,
+     IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP;
 
 type
      TFormMain = class(TForm)
@@ -13,16 +14,6 @@ type
           IdHTTP: TIdHTTP;
           LabelResults: TLabel;
           PageControl: TPageControl;
-          TabScreenView: TTabSheet;
-          TabException: TTabSheet;
-          Edit_SR: TEdit;
-          Label_SR: TLabel;
-          Edit_AV: TEdit;
-          Label_AV: TLabel;
-          Edit_UA: TEdit;
-          Label_UA: TLabel;
-          Label_DS: TLabel;
-          Edit_DS: TEdit;
           PanelParams: TPanel;
           Label_V: TLabel;
           Edit_V: TEdit;
@@ -35,14 +26,8 @@ type
           Edit_CD: TEdit;
           Label_CD: TLabel;
           LabelType: TLabel;
-          Edit_CN: TEdit;
-          Label_CN: TLabel;
           Edit_UID: TEdit;
           Label_UID: TLabel;
-          Edit_EXF: TEdit;
-          Edit_EXD: TEdit;
-          Label_EXD: TLabel;
-          Label_EXF: TLabel;
           TabEvent: TTabSheet;
           Edit_EL: TEdit;
           Label_EL: TLabel;
@@ -52,13 +37,23 @@ type
           Label_EA: TLabel;
           Edit_EC: TEdit;
           Label_EC: TLabel;
-    TabPageView: TTabSheet;
-    Edit_DH: TEdit;
-    Label_DH: TLabel;
-    Label_DP: TLabel;
-    Edit_DP: TEdit;
-    Label_DT: TLabel;
-    Edit_DT: TEdit;
+          TabPageView: TTabSheet;
+          Edit_DH: TEdit;
+          Label_DH: TLabel;
+          Label_DP: TLabel;
+          Edit_DP: TEdit;
+          Label_DT: TLabel;
+          Edit_DT: TEdit;
+          Edit_SR: TEdit;
+          Label_SR: TLabel;
+          Edit_AV: TEdit;
+          Label_AV: TLabel;
+          Edit_UA: TEdit;
+          Label_UA: TLabel;
+          Edit_DS: TEdit;
+          Label_DS: TLabel;
+          Edit_CN: TEdit;
+          Label_CN: TLabel;
           procedure ButtonSendClick(Sender: TObject);
      private
           { Private declarations }
@@ -88,37 +83,24 @@ begin
      //
      EnvStr.Clear;
      //
-     if PageControl.ActivePage = TabScreenView then
-     begin
-          if Edit_V.Text   <> '' then EnvStr.Values['v']   := Edit_V.Text;
-          if Edit_TID.Text <> '' then EnvStr.Values['tid'] := Edit_TID.Text;
-          if Edit_CID.Text <> '' then EnvStr.Values['cid'] := Edit_CID.Text;
-          //
-          EnvStr.Values['t'] := TabScreenView.Hint;
-          //
-          if Edit_AN.Text  <> '' then EnvStr.Values['an']  := Edit_AN.Text;
-          if Edit_AV.Text  <> '' then EnvStr.Values['av']  := Edit_AV.Text;
-          //
-          if Edit_CD.Text  <> '' then EnvStr.Values['cd']  := Edit_CD.Text;
-          //
-          if Edit_UID.Text <> '' then EnvStr.Values['uid'] := Edit_UID.Text;
-          if Edit_UA.Text  <> '' then EnvStr.Values['ua']  := Edit_UA.Text;
-          if Edit_SR.Text  <> '' then EnvStr.Values['sr']  := Edit_SR.Text;
-          if Edit_DS.Text  <> '' then EnvStr.Values['ds']  := Edit_DS.Text;
-          if Edit_CN.Text  <> '' then EnvStr.Values['cn']  := Edit_CN.Text;
-     end;
-     //
+
      if PageControl.ActivePage = TabPageView then
      begin
-          if Edit_V.Text   <> '' then EnvStr.Values['v']   := Edit_V.Text;
-          if Edit_TID.Text <> '' then EnvStr.Values['tid'] := Edit_TID.Text;
-          if Edit_CID.Text <> '' then EnvStr.Values['cid'] := Edit_CID.Text;
+          if Edit_V.Text <> '' then
+               EnvStr.Values['v'] := Edit_V.Text;
+          if Edit_TID.Text <> '' then
+               EnvStr.Values['tid'] := Edit_TID.Text;
+          if Edit_CID.Text <> '' then
+               EnvStr.Values['cid'] := Edit_CID.Text;
           //
           EnvStr.Values['t'] := TabPageView.Hint;
           //
-          if Edit_DH.Text  <> '' then EnvStr.Values['dh']  := Edit_DH.Text;
-          if Edit_DP.Text  <> '' then EnvStr.Values['dp']  := Edit_DP.Text;
-          if Edit_DT.Text  <> '' then EnvStr.Values['dt']  := Edit_DT.Text;
+          if Edit_DH.Text <> '' then
+               EnvStr.Values['dh'] := Edit_DH.Text;
+          if Edit_DP.Text <> '' then
+               EnvStr.Values['dp'] := Edit_DP.Text;
+          if Edit_DT.Text <> '' then
+               EnvStr.Values['dt'] := Edit_DT.Text;
           //
           EnvStr.Values['dr'] := 'http://www.zoetecnologia.com.br';
           EnvStr.Values['cn'] := '(direct)';
@@ -127,21 +109,7 @@ begin
           EnvStr.Values['ck'] := 'UserName';
           EnvStr.Values['cc'] := 'content';
      end;
-
-     if PageControl.ActivePage = TabException then
-     begin
-          EnvStr.Values['v'] := Edit_V.Text;
-          EnvStr.Values['tid'] := Edit_TID.Text;
-          EnvStr.Values['cid'] := Edit_CID.Text;
-          //
-          EnvStr.Values['t'] := TabException.Hint;
-          //
-          EnvStr.Values['an'] := Edit_AN.Text;
-          EnvStr.Values['cd'] := Edit_CD.Text;
-          EnvStr.Values['uid'] := Edit_UID.Text;
-          EnvStr.Values['exd'] := Edit_EXD.Text;
-          EnvStr.Values['exf'] := Edit_EXF.Text;
-     end;
+     //
      if PageControl.ActivePage = TabEvent then
      begin
           EnvStr.Values['v'] := Edit_V.Text;
@@ -182,3 +150,4 @@ begin
 end;
 
 end.
+

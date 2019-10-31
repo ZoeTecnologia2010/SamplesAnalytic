@@ -65,148 +65,6 @@ object FormMain: TFormMain
     Height = 198
     ActivePage = TabPageView
     TabOrder = 2
-    object TabScreenView: TTabSheet
-      Hint = 'screenview'
-      Caption = 'ScreenView'
-      object Label_SR: TLabel
-        Left = 11
-        Top = 60
-        Width = 49
-        Height = 13
-        Caption = 'Param_SR'
-      end
-      object Label_AV: TLabel
-        Left = 11
-        Top = 32
-        Width = 49
-        Height = 13
-        Caption = 'Param_AV'
-      end
-      object Label_UA: TLabel
-        Left = 11
-        Top = 6
-        Width = 50
-        Height = 13
-        Caption = 'Param_UA'
-      end
-      object Label_DS: TLabel
-        Left = 11
-        Top = 87
-        Width = 49
-        Height = 13
-        Caption = 'Param_DS'
-      end
-      object Label_CN: TLabel
-        Left = 11
-        Top = 114
-        Width = 50
-        Height = 13
-        Caption = 'Param_CN'
-      end
-      object Edit_SR: TEdit
-        Left = 75
-        Top = 57
-        Width = 121
-        Height = 21
-        Hint = 'Screen Resolution'
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        Text = '800x600'
-        TextHint = 'Screen Resolution'
-      end
-      object Edit_AV: TEdit
-        Left = 75
-        Top = 30
-        Width = 121
-        Height = 21
-        Hint = 'Application Version'
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        Text = '1.2.0.9'
-        TextHint = 'Application Version'
-      end
-      object Edit_UA: TEdit
-        Left = 75
-        Top = 3
-        Width = 121
-        Height = 21
-        Hint = 'User Agent'
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 2
-        Text = 'Windows 10'
-        TextHint = 'User Agent'
-      end
-      object Edit_DS: TEdit
-        Left = 75
-        Top = 84
-        Width = 121
-        Height = 21
-        Hint = 'Data Source'
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 3
-        Text = 'Free'
-        TextHint = 'Data Source'
-      end
-      object Edit_CN: TEdit
-        Left = 75
-        Top = 111
-        Width = 121
-        Height = 21
-        Hint = 'Campaign Name'
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 4
-        Text = 'AppFinancas'
-        TextHint = 'Campaign Name'
-      end
-    end
-    object TabException: TTabSheet
-      Hint = 'exception'
-      Caption = 'Exception'
-      ImageIndex = 2
-      object Label_EXD: TLabel
-        Left = 11
-        Top = 9
-        Width = 55
-        Height = 13
-        Caption = 'Param_EXD'
-      end
-      object Label_EXF: TLabel
-        Left = 11
-        Top = 35
-        Width = 54
-        Height = 13
-        Caption = 'Param_EXF'
-      end
-      object Edit_EXF: TEdit
-        Left = 75
-        Top = 33
-        Width = 121
-        Height = 21
-        Hint = 'Fatal Error'
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        Text = '1'
-        TextHint = 'Fatal Error'
-      end
-      object Edit_EXD: TEdit
-        Left = 75
-        Top = 6
-        Width = 292
-        Height = 21
-        Hint = 'IO Exception'
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        Text = 'Field is requerid'
-        TextHint = 'IO Exception'
-      end
-    end
     object TabEvent: TTabSheet
       Hint = 'event'
       Caption = 'Event'
@@ -295,29 +153,64 @@ object FormMain: TFormMain
       ExplicitLeft = 0
       ExplicitTop = 27
       object Label_DH: TLabel
-        Left = 19
-        Top = 14
+        Left = 3
+        Top = 11
         Width = 50
         Height = 13
         Caption = 'Param_DH'
       end
       object Label_DP: TLabel
-        Left = 19
-        Top = 40
+        Left = 3
+        Top = 37
         Width = 49
         Height = 13
         Caption = 'Param_DP'
       end
       object Label_DT: TLabel
-        Left = 19
-        Top = 68
+        Left = 3
+        Top = 65
         Width = 49
         Height = 13
         Caption = 'Param_DT'
       end
-      object Edit_DH: TEdit
-        Left = 83
+      object Label_SR: TLabel
+        Left = 196
+        Top = 65
+        Width = 49
+        Height = 13
+        Caption = 'Param_SR'
+      end
+      object Label_AV: TLabel
+        Left = 196
+        Top = 37
+        Width = 49
+        Height = 13
+        Caption = 'Param_AV'
+      end
+      object Label_UA: TLabel
+        Left = 196
         Top = 11
+        Width = 50
+        Height = 13
+        Caption = 'Param_UA'
+      end
+      object Label_DS: TLabel
+        Left = 196
+        Top = 92
+        Width = 49
+        Height = 13
+        Caption = 'Param_DS'
+      end
+      object Label_CN: TLabel
+        Left = 196
+        Top = 119
+        Width = 50
+        Height = 13
+        Caption = 'Param_CN'
+      end
+      object Edit_DH: TEdit
+        Left = 59
+        Top = 8
         Width = 121
         Height = 21
         Hint = 'Document hostname'
@@ -328,8 +221,8 @@ object FormMain: TFormMain
         TextHint = 'Document hostname'
       end
       object Edit_DP: TEdit
-        Left = 83
-        Top = 38
+        Left = 59
+        Top = 35
         Width = 121
         Height = 21
         Hint = 'Page'
@@ -340,8 +233,8 @@ object FormMain: TFormMain
         TextHint = 'Page'
       end
       object Edit_DT: TEdit
-        Left = 83
-        Top = 65
+        Left = 59
+        Top = 62
         Width = 121
         Height = 21
         Hint = 'Title'
@@ -350,6 +243,66 @@ object FormMain: TFormMain
         TabOrder = 2
         Text = 'Principal'
         TextHint = 'Title'
+      end
+      object Edit_SR: TEdit
+        Left = 252
+        Top = 62
+        Width = 121
+        Height = 21
+        Hint = 'Screen Resolution'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 3
+        Text = '800x600'
+        TextHint = 'Screen Resolution'
+      end
+      object Edit_AV: TEdit
+        Left = 252
+        Top = 35
+        Width = 121
+        Height = 21
+        Hint = 'Application Version'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 4
+        Text = '1.2.0.9'
+        TextHint = 'Application Version'
+      end
+      object Edit_UA: TEdit
+        Left = 252
+        Top = 8
+        Width = 121
+        Height = 21
+        Hint = 'User Agent'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 5
+        Text = 'Windows 10'
+        TextHint = 'User Agent'
+      end
+      object Edit_DS: TEdit
+        Left = 251
+        Top = 89
+        Width = 121
+        Height = 21
+        Hint = 'Data Source'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 6
+        Text = 'Free'
+        TextHint = 'Data Source'
+      end
+      object Edit_CN: TEdit
+        Left = 251
+        Top = 116
+        Width = 121
+        Height = 21
+        Hint = 'Campaign Name'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 7
+        Text = 'AppFinancas'
+        TextHint = 'Campaign Name'
       end
     end
   end
